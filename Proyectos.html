@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Proyectos</title>
+
+<!-- TIPOGRAFÍAS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Jersey+10+Charted&family=Oi&display=swap" rel="stylesheet">
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* BODY */
+body{
+background-color:#FEF4DB;
+font-family:'Alumni Sans', sans-serif;
+overflow-x:hidden;
+}
+
+/* TÍTULO */
+#titulo{
+text-align:center;
+font-family:'Oi', cursive;
+font-weight:400;
+color:#6B061B;
+font-size:70px;
+margin-top:80px;
+letter-spacing:2px;
+}
+
+
+/* CONTENEDOR */
+#contenedor{
+width:1100px;
+height:500px;
+position:relative;
+margin-left:calc(50vw - 550px);
+margin-top:80px;
+}
+
+/* CAJAS */
+.caja{
+width:320px;
+height:400px;
+position:absolute;
+top:50px;
+left:390px;
+
+background-color:#595b3E;
+color:#FEF4DB;
+
+text-align:center;
+padding-top:160px;
+
+border-radius:20px;
+border:2px solid #292E16;
+
+box-shadow:0px 15px 30px rgba(0,0,0,0.25);
+
+font-size:28px;
+transition:all 0.6s;
+}
+
+/* ESTADOS */
+.activa{
+transform:scale(1.1);
+z-index:3;
+opacity:1;
+}
+
+.izquierda{
+transform:translateX(-280px) scale(0.8);
+z-index:2;
+opacity:0.5;
+}
+
+.derecha{
+transform:translateX(280px) scale(0.8);
+z-index:2;
+opacity:0.5;
+}
+
+.oculta{
+transform:scale(0.3);
+opacity:0;
+z-index:1;
+}
+
+/* BOTONES */
+#botones{
+text-align:center;
+margin-top:40px;
+}
+
+#botones button{
+background-color:#6B061B;
+color:#FEF4DB;
+border:none;
+padding:12px 25px;
+margin:10px;
+cursor:pointer;
+font-size:22px;
+border-radius:8px;
+transition:0.3s;
+} 
+
+#botones button:hover{
+background-color:#42010F;
+}
+
+/* FLORES */
+.flor{
+position:fixed;
+top:50%;
+transform:translateY(-50%);
+width:300px;
+z-index:50;
+opacity:0.9;
+}
+
+/* laterales */
+.flor.izq{
+left:120px;
+}
+
+.flor.der{
+right:120px;
+}
+
+/* RESPONSIVE */
+@media (max-width:800px){
+
+#contenedor{
+width:100%;
+margin-left:0;
+}
+
+.caja{
+left:50%;
+transform:translateX(-50%);
+}
+
+#titulo{
+font-size:45px;
+}
+
+.sub{
+font-size:25px;
+}
+
+/* flores más pequeñas en móvil */
+.flor{
+width:180px;
+}
+
+}
+
+</style>
+
+<script>
+
+let index = 0;
+let cajas = ["caja1","caja2","caja3","caja4"];
+
+function actualizar(){
+
+  for(let i=0; i<cajas.length; i++){
+
+    let el = document.getElementById(cajas[i]);
+    el.className = "caja";
+
+    if(i == index){
+    el.classList.add("activa");
+    }
+    else if(i == index - 1){
+    el.classList.add("izquierda");
+    }
+    else if(i == index + 1){
+    el.classList.add("derecha");
+    }
+   else{
+   el.classList.add("oculta");
+   }
+   
+ }
+}
+
+function next(){
+if(index < cajas.length -1){
+index++;
+actualizar();
+}
+}
+
+function prev(){
+if(index > 0){
+index--;
+actualizar();
+}
+}
+
+</script>
+
+</head>
+
+<body onload="actualizar()">
+
+<h1 id="titulo">PROYECTOS</h1>
+
+<div id="contenedor">
+<div id="caja1" class="caja">Proyecto 1</div>
+<div id="caja2" class="caja">Proyecto 2</div>
+<div id="caja3" class="caja">Proyecto 3</div>
+<div id="caja4" class="caja">Proyecto 4</div>
+</div>
+
+<div id="botones">
+<button onclick="prev()">&lt;</button>
+<button onclick="next()">&gt;</button>
+</div>
+
+<img src="Flores proyectos/Mitad_flor_izquierda.jpeg" class="flor izq">
+<img src="Flores proyectos/Mitad_flor_derecha.jpeg" class="flor der">
+
+</body>
+</html>

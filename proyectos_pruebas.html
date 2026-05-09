@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PROYECTOS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oi&family=Alumni+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* BODY */
+body{
+  background:#FEF4DB;
+  font-family:'Alumni Sans', sans-serif;
+  overflow-x:hidden;
+}
+
+/* TITULO */
+#titulo{
+  text-align:center;
+  font-family:'Oi', cursive;
+  font-weight:400;
+  font-size:70px;
+  margin-top:70px;
+  color:#6B061B;
+}
+
+/* ESCRITORIO / MOVIL */
+#version-escritorio{display:block;}
+#version-movil{display:none;}
+
+/* CAROUSEL */
+#contenedor{
+  width:1100px;
+  height:580px;
+  margin:60px auto;
+  position:relative;
+}
+
+.caja{
+  width:310px;
+  height:470px;
+  position:absolute;
+  top:50px;
+  left:390px;
+  border-radius:22px;
+  overflow:hidden;
+  border:2px solid #292E16;
+  box-shadow:0 15px 35px rgba(0,0,0,0.25);
+  transition:0.6s;
+}
+
+.caja img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* OVERLAY */
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(89,91,62,0.7);
+  opacity:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+  text-align:center;
+  transition:0.4s;
+}
+
+.overlay p{
+  color:#FEF4DB;
+  font-size:22px;
+}
+
+.caja:hover .overlay{
+  opacity:1;
+}
+
+/* ESTADOS */
+.activa{transform:scale(1.1);z-index:3}
+.izquierda{transform:translateX(-280px) scale(0.8);opacity:0.5}
+.derecha{transform:translateX(280px) scale(0.8);opacity:0.5}
+.oculta{opacity:0;transform:scale(0.3)}
+
+/* BOTONES */
+#botones{
+  text-align:center;
+  margin-top:20px;
+}
+
+button{
+  background:#6B061B;
+  color:#FEF4DB;
+  border:none;
+  padding:10px 20px;
+  font-size:22px;
+  margin:5px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* FLORES SOLO ESCRITORIO */
+.flor{
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  width:300px;
+  z-index:50;
+  opacity:0.9;
+}
+
+
+/* laterales */
+.flor.izq{
+left:120px;
+}
+
+.flor.der{
+right:120px;
+}
+/* MOVIL LISTA */
+#lista-movil{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding:20px;
+}
+
+.tarjeta-movil{
+  display:flex;
+  align-items:center;
+  background:#595b3E;
+  color:#FEF4DB;
+  border-radius:15px;
+  cursor:pointer;
+}
+
+.tarjeta-movil img{
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  margin:10px;
+  border-radius:10px;
+}
+
+.tarjeta-movil h3{
+  font-family:'Oi', cursive;
+  font-size:16px;
+  font-weight:200;
+}
+
+/* =========================
+MODAL CAJA
+========================= */
+#modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+/* CAJA */
+#modal-caja{
+  width:80%;
+  max-width:380px;
+  background:#FEF4DB;
+  border-radius:18px;
+  padding:25px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* TEXTO */
+#modal-caja h2{
+  font-family:'Oi', cursive;
+  color:#6B061B;
+  margin-bottom:10px;
+}
+
+#modal-caja p{
+  font-size:18px;
+  color:#333;
+  line-height:1.4;
+}
+
+/* BOTÓN X */
+#cerrar{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:26px;
+  cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+#version-escritorio{display:none;}
+#version-movil{display:block;}
+
+#titulo{font-size:40px;}
+
+/* OCULTAR FLORES */
+.flor{
+  display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body onload="actualizar()">
+
+<h1 id="titulo">PROYECTOS</h1>
+
+<!-- ESCRITORIO -->
+<div id="version-escritorio">
+
+<div id="contenedor">
+
+<div id="caja1" class="caja">
+<img src="Tarjetas_proyectos/lectura_manos.png">
+<div class="overlay"><p>Lectura espiritual de manos</p></div>
+</div>
+
+<div id="caja2" class="caja">
+<img src="Tarjetas_proyectos/limpieza_energias.png">
+<div class="overlay"><p>Limpieza de energías</p></div>
+</div>
+
+<div id="caja3" class="caja">
+<img src="Tarjetas_proyectos/pocimas_amor.png">
+<div class="overlay"><p>Pócima de amor</p></div>
+</div>
+
+<div id="caja4" class="caja">
+<img src="Tarjetas_proyectos/protección_espiritual.png">
+<div class="overlay"><p>Protección espiritual</p></div>
+</div>
+
+</div>
+
+<div id="botones">
+<button onclick="prev()"><</button>
+<button onclick="next()">></button>
+</div>
+
+</div>
+
+<!-- MOVIL -->
+<div id="version-movil">
+
+<div id="lista-movil">
+
+<div class="tarjeta-movil"
+onclick="abrirModal('Lectura de manos','Mensajes espirituales en la mano')">
+<img src="Stickers_movil/lectura_manos.png">
+<h3>LECTURA DE MANOS</h3>
+</div>
+
+<div class="tarjeta-movil"
+onclick="abrirModal('Limpieza de energías','Elimina energías negativas')">
+<img src="Stickers_movil/limpieza_energias.png">
+<h3>LIMPIEZA ENERGÍAS</h3>
+</div>
+
+<div class="tarjeta-movil"
+onclick="abrirModal('Pócima de amor','Ritual para atraer amor y conexión emocional')">
+<img src="Stickers_movil/pocima_amor.png">
+<h3>PÓCIMA DE AMOR</h3>
+</div>
+
+<div class="tarjeta-movil"
+onclick="abrirModal('Protección espiritual','Escudo energético contra malas vibraciones')">
+<img src="Stickers_movil/proteccion_espiritual.png">
+<h3>PROTECCIÓN ESPIRITUAL</h3>
+</div>
+
+</div>
+</div>
+
+<!-- MODAL -->
+<div id="modal">
+  <div id="modal-caja">
+    <div id="cerrar" onclick="cerrarModal()">✖</div>
+    <h2 id="modal-titulo"></h2>
+    <p id="modal-texto"></p>
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+
+let index = 0;
+let cajas = ["caja1","caja2","caja3","caja4"];
+
+function actualizar(){
+for(let i=0;i<cajas.length;i++){
+let el=document.getElementById(cajas[i]);
+el.className="caja";
+
+if(i==index) el.classList.add("activa");
+else if(i==index-1) el.classList.add("izquierda");
+else if(i==index+1) el.classList.add("derecha");
+else el.classList.add("oculta");
+}
+}
+
+function next(){
+if(index<cajas.length-1){
+index++;
+actualizar();
+}
+}
+
+function prev(){
+if(index>0){
+index--;
+actualizar();
+}
+}
+
+/* MODAL */
+function abrirModal(titulo,texto){
+document.getElementById("modal").style.display="flex";
+document.getElementById("modal-titulo").innerText=titulo;
+document.getElementById("modal-texto").innerText=texto;
+}
+
+function cerrarModal(){
+document.getElementById("modal").style.display="none";
+}
+
+</script>
+
+<!-- FLORES -->
+<img src="Flores_proyectos/Mitad_flor_izquierda.jpeg" class="flor izq">
+<img src="Flores_proyectos/Mitad_flor_derecha.jpeg" class="flor der">
+
+</body>
+</html>
